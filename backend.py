@@ -27,14 +27,6 @@ def wishes(wish: str):
 
 if __name__ == "__main__":
     #  get the ip address of the machine from ifconfig
-
-    possible_ips = os.popen("ifconfig | grep 'inet '").read().split("inet ")[1:]
-    for ip in possible_ips:
-        ip = ip.split(" ")[0]
-        if ip.startswith("172."):
-            continue
-        print("using ip", ip)
-        break
     
     print("running on", ip, BACKEND_PORT)
     uvicorn.run(app, host="0.0.0.0", port=BACKEND_PORT)
