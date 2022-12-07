@@ -28,13 +28,10 @@ st.write("## add your name to the list !!")
 #  if the server returns anything else, display a message saying "there was an error adding your name to the list"
 
 #  add a text input to the page
-st.text_input("enter your name here", key="deathWish")
+text = st.text_input("enter your name here", key="deathWish")
 
 st.button("submit", key="submit")
 
-#  when the user presses enter, send a post request to the server
-#  with the text input as the body of the request
-text = str(st.session_state.deathWish.value)
 if st.session_state.submit:
     server_dest = f"http://{BACKEND_IP}:{BACKEND_PORT}/wishes"
     try:
