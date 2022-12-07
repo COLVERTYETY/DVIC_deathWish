@@ -53,10 +53,12 @@ if st.session_state.submit:
     server_dest = f"http://{BACKEND_IP}:{BACKEND_PORT}/wishes?wish={text}"
     try:
         response = requests.put(server_dest)
-        if response.text == "OK":
+        if "OK" in response.text:
             st.write("your name has been added to the list")
+            #  reload the page
+            st.experimental_rerun()
         else:
-            st.write("there was an error adding your name to the list")
+            st.write("There was an error adding your name to the list.")
     except:
         st.write("there was an error adding your name to the list")
 
