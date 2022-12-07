@@ -15,15 +15,14 @@ def count():
 @app.get("/wishes")
 def wishes():
     buffer  = "{"
-    for i,wish,time in enumerate(deathWishes):
-        buffer += f'"{i}": ("{wish}", "{time}"),'
-    buffer += "}"
+    for wish in deathWishes:
+        buffer += f'"{wish},'
     return buffer
 
 @app.post("/wishes")
 def wishes(wish: str):
     print(wish)
-    deathWishes.append((wish, time.time()))
+    deathWishes.append(wish)
     return "OK"
 
 if __name__ == "__main__":

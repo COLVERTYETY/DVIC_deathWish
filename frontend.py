@@ -35,7 +35,7 @@ try:
     res = res.replace("(", "")
     res = res.replace(")", "\n")
     res = res.replace(":", "")
-    res = res.replace(",", "")
+    res = res.replace(",", "\n")
     st.write(res)
 
 except:
