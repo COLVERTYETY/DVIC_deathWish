@@ -59,8 +59,8 @@ if st.session_state.submit:
             st.experimental_rerun()
         else:
             st.write("There was an error adding your name to the list.")
-    except:
-        st.write("there was an error adding your name to the list")
+    except Exception as e:
+        st.write(e)
 
 
 
