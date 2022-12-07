@@ -13,9 +13,10 @@ server_dest = f"http://{BACKEND_IP}:{BACKEND_PORT}/count"
 st.write("# welcome to the DVIC death wish list")
 
 st.write("## number of people who want to die")
-
-st.write(requests.get(server_dest).text)
-
+try:
+    st.write(requests.get(server_dest).text)
+except:
+    st.write("error connecting to the server")
 
 st.write("contribute to the project on github: ")
 st.write("https://github.com/COLVERTYETY/DVIC_deathWish")
