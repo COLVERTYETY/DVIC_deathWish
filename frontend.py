@@ -34,7 +34,7 @@ st.button("submit", key="submit")
 
 #  when the user presses enter, send a post request to the server
 #  with the text input as the body of the request
-text = st.session_state.deathWish
+text = str(st.session_state.deathWish.value)
 if st.session_state.submit:
     server_dest = f"http://{BACKEND_IP}:{BACKEND_PORT}/wishes"
     try:
