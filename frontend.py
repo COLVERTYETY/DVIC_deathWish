@@ -10,7 +10,7 @@ from settings import *
 
 server_dest = f"http://{BACKEND_IP}:{BACKEND_PORT}/count"
 
-st.write("# welcome to the DVIC death wish list")
+st.write("# welcome to the DVIC Death Wish List 💀")
 
 st.write("## number of people who want to die: ")
 try:
@@ -18,7 +18,7 @@ try:
 except:
     st.write("error connecting to the server")
 
-st.write("## Here is arandom person who wants to die: ")
+st.write("## Here is a random person who wants to die: ")
 
 #  get req on /wishes
 #  get the list of people who want to die
@@ -29,7 +29,7 @@ server_dest = f"http://{BACKEND_IP}:{BACKEND_PORT}/wishes"
 try:
     response = requests.get(server_dest)
     res = response.text
-    st.write(res)
+    st.write(f"# {res}")
 
 except:
     st.write("error connecting to the server")
