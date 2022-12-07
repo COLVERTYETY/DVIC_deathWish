@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+from settings import *
 
 #  query teh api for the number of people who want to die
 #  and display it on the page
