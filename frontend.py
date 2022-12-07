@@ -18,7 +18,7 @@ try:
 except:
     st.write("error connecting to the server")
 
-st.write("## list of people who want to die: ")
+st.write("## Here is arandom person who wants to die: ")
 
 #  get req on /wishes
 #  get the list of people who want to die
@@ -29,13 +29,6 @@ server_dest = f"http://{BACKEND_IP}:{BACKEND_PORT}/wishes"
 try:
     response = requests.get(server_dest)
     res = response.text
-    res = res.replace("{", "")
-    res = res.replace("}", "")
-    res = res.replace('"', "")
-    res = res.replace("(", "")
-    res = res.replace(")", "\n")
-    res = res.replace(":", "")
-    res = res.replace(",", "\n")
     st.write(res)
 
 except:
@@ -57,9 +50,9 @@ text = st.text_input("enter your name here", key="deathWish")
 st.button("submit", key="submit")
 
 if st.session_state.submit:
-    server_dest = f"http://{BACKEND_IP}:{BACKEND_PORT}/wishes"
+    server_dest = f"http://{BACKEND_IP}:{BACKEND_PORT}/wishes?wish={text}"
     try:
-        response = requests.post(server_dest, data=str(text))
+        response = requests.put(server_dest)
         if response.text == "OK":
             st.write("your name has been added to the list")
         else:

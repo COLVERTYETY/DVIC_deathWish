@@ -2,6 +2,7 @@ import fastapi
 import uvicorn
 import os
 import time
+import random
 from settings import *
 
 app = fastapi.FastAPI()
@@ -14,12 +15,11 @@ def count():
 
 @app.get("/wishes")
 def wishes():
-    buffer  = "{"
-    for wish in deathWishes:
-        buffer += f'"{wish},'
-    return buffer
+    #  pick a random person from the list of death wishes
+    #  and return it
+    return random.choice(deathWishes)
 
-@app.post("/wishes")
+@app.put("/wishes")
 def wishes(wish: str):
     print(wish)
     deathWishes.append(wish)
