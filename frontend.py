@@ -12,11 +12,35 @@ server_dest = f"http://{BACKEND_IP}:{BACKEND_PORT}/count"
 
 st.write("# welcome to the DVIC death wish list")
 
-st.write("## number of people who want to die")
+st.write("## number of people who want to die: ")
 try:
-    st.write(requests.get(server_dest).text)
+    st.write(f"# {requests.get(server_dest).text}")
 except:
     st.write("error connecting to the server")
+
+st.write("## list of people who want to die: ")
+
+#  get req on /wishes
+#  get the list of people who want to die
+#  display it on the page
+
+server_dest = f"http://{BACKEND_IP}:{BACKEND_PORT}/wishes"
+
+try:
+    response = requests.get(server_dest)
+    res = response.text
+    res = res.replace("{", "")
+    res = res.replace("}", "")
+    res = res.replace('"', "")
+    res = res.replace("(", "")
+    res = res.replace(")", "\n")
+    res = res.replace(":", "")
+    res = res.replace(",", "")
+    st.write(res)
+
+except:
+    st.write("error connecting to the server")
+
 
 st.write("## add your name to the list !!")
 #  add a text input to the page
