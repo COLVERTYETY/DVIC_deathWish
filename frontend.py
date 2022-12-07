@@ -35,7 +35,7 @@ st.button("submit", key="submit")
 if st.session_state.submit:
     server_dest = f"http://{BACKEND_IP}:{BACKEND_PORT}/wishes"
     try:
-        response = requests.post(server_dest, data=text)
+        response = requests.post(server_dest, data=str(text))
         if response.text == "OK":
             st.write("your name has been added to the list")
         else:

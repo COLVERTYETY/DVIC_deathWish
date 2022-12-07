@@ -22,6 +22,7 @@ def wishes():
 
 @app.post("/wishes")
 def wishes(wish: str):
+    print(wish)
     deathWishes.append((wish, time.time()))
     return "OK"
 
