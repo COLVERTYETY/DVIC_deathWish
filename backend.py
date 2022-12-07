@@ -7,7 +7,7 @@ from settings import *
 
 app = fastapi.FastAPI()
 
-deathWishes = []
+deathWishes = set()
 
 @app.get("/count")
 def count():
@@ -17,12 +17,12 @@ def count():
 def wishes():
     #  pick a random person from the list of death wishes
     #  and return it
-    return random.choice(deathWishes)
+    return random.choice(list(deathWishes))
 
 @app.put("/wishes")
 def wishes(wish: str):
     print(wish)
-    deathWishes.append(wish)
+    deathWishes.add(wish)
     return "OK"
 
 if __name__ == "__main__":
